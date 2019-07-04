@@ -9,14 +9,21 @@ const connect = function() {
   conn.setEncoding('utf8'); 
     
     // attached an event handler to handle incoming data and console log it for the player.
-  // conn.on('data', function(message) {
-  //   console.log(message);
-  // });
+  conn.on('data', function(message) {
+    console.log(message);
+  });
 
   conn.on('connect', function() {
     conn.write("Name: R.L");
     console.log("Successfully connected to game server");
+    setInterval(function() {conn.write("Move: left")}, 50);
   });
+
+ 
+  // setInterval(function() {conn.write("Move: down")}, 50);
+  // setInterval(function() {conn.write("Move: left")}, 50);
+  // setInterval(function() {conn.write("Move: right")}, 50);
+
   
   return conn;
 };
